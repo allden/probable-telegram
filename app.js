@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
-const uri = process.argv[2];
+const uri = process.env.MONGODB_URI || process.argv[2];
 const PORT = process.env.PORT || 5000;
 let router = require('./routers/router');
 mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true});
