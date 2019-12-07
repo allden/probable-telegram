@@ -1,0 +1,21 @@
+<header>
+    <h1><%= title %></h1>
+    <ul>
+        <li><a class="nav-btn" href="/">Home</a></li>
+        <li class="nav-btn category-btn">Categories
+            <div class="category-list">
+                <% if(categories.length !== 0) { %>
+                    <ul>
+                        <% categories.forEach(function(category) { %>
+                            <li><a class="nav-btn" href='<%=category.url%>'><%=category.name%></a></li>
+                        <% }); %>
+                    </ul>
+                <% } else { %>
+                    <p>There are no categories. Would you like to <a href="/create/category">create some</a>?</p>
+                <% }; %>
+            </div class="category-list">
+        </li>
+        <li><a class="nav-btn" href="/create/product">Create a product</a></li>
+        <li><a class="nav-btn" href="/create/category">Create a category</a></li>
+    </ul>
+</header>

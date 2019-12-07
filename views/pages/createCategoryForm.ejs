@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/meta.ejs') %>
+    <link rel="stylesheet" href="/styles/form.css">
+</head>
+<body>
+    <%- include('../partials/header.ejs') %>
+    <form action="/create/category" method="POST">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" placeholder="ex. Gardening">
+        <label for="description">Description</label>
+        <textarea name="description" id="description" placeholder="ex. All sorts of gardening supplies"></textarea>
+        <input class="nav-btn form-btn" type="submit" value="Submit">
+    </form>
+    <%- include('../partials/footer.ejs') %>
+    <%- include('../partials/scripts.ejs') %>
+    <script src="/scripts/categoryValidation.js"></script>
+</body>
+</html>

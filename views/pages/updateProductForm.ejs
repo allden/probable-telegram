@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/meta.ejs') %>
+    <link rel="stylesheet" href="/styles/form.css">
+</head>
+<body>
+    <%- include('../partials/header.ejs') %>
+    <form action="<%=product.updateUrl%>" method="POST" enctype="multipart/form-data">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" placeholder="ex. Flower Pot" value='<%=product.name%>'>
+        <label for="description">Description</label>
+        <textarea name="description" id="description" placeholder="ex. A green flower pot for all of your plant based needs"><%=product.description%></textarea>
+        <label for="category">Category</label>
+        <select name="category" id="category">
+            <% categories.forEach(function(category) { %>
+                <% console.log(category._id, product.category) %>
+                <%if(category._id.toString() === product.category.toString()) { %>
+                    <option value='<%= category._id %>' selected><%= category.name %></option>
+                <% } else { %>
+                    <option value='<%= category._id %>'><%= category.name %></option>
+                <% } %>    
+            <% }) %>
+        </select>
+        <label for="price">Price</label>
+        <input type="text" name="price" id="price" placeholder="ex. 4.99" value='<%=product.price%>'>
+        <label for="stock">Stock</label>
+        <input type="number" name="stock" id="stock" value='<%=product.stock%>'>
+        <input class="nav-btn form-btn" type="submit" value="Submit">
+    </form>
+    <%- include('../partials/footer.ejs') %>
+    <%- include('../partials/scripts.ejs') %>
+    <script src="/scripts/productValidation.js"></script>
+</body>
+</html>

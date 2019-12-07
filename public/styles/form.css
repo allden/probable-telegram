@@ -1,0 +1,19 @@
+input, select, textarea {
+    display: block;
+    margin-bottom: .5rem;
+    width: 100%;
+    padding: .5rem 1rem;
+}
+
+form {
+    background: var(--dark-color);
+    padding: 1rem;
+    color: #fff;
+    min-width: 600px;
+    max-width: 2000px;
+}
+
+.form-btn {
+    max-height: 2rem;
+    border: 0;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/meta.ejs') %>
+</head>
+<body>
+    <%- include('../partials/header.ejs') %>
+    <div class="container product-container">
+        <section id="product-box">
+            <div class='left'>
+                <img src='/<%=product.image%>'>
+            </div>
+            <div class="right">
+                <h3><%=product.name%></h3>
+                <ul class="product-box-info">
+                    <li class="item-description"><strong>Description</strong>: <%=product.description%></li>
+                    <li><strong>Category</strong>: <a href="<%=product.category.url%>"><%=product.category.name%></a></li>
+                    <li><strong>In stock</strong>: <%=product.stock%></li>
+                    <li><strong>Price</strong>: $<%=product.price.toFixed(2)%></li>
+                </ul>
+                <div class="btn-box">
+                    <a class="plain-btn" href="<%=product.updateUrl%>">Update</a>
+                    <form action="<%=product.deleteUrl%>" method="POST">
+                        <input class="plain-btn" type="submit" value="Delete">
+                    </form>
+                </div>
+            </div>
+        </section>
+        <main>
+            <div id="product-list">
+                <% if(products.length !== 0) { %>
+                    <% products.forEach(function(product) { %>
+                        <div class="card">
+                            <% console.log(product.category) %>
+                            <div class="top">
+                                <h3 class="product-title"><%=product.name%></h3>
+                                <img src='/<%=product.image%>'>
+                            </div>
+                            <div class="bottom">
+                                <p class="item-description"><strong>Description</strong>: <%=product.description%></p>
+                                <ul class="product-info">
+                                    <li><strong>Category</strong>: <a href="<%=product.category.url%>"><%=product.category.name%></a></li>
+                                    <li><strong>In stock</strong>: <%=product.stock%></li>
+                                    <li><strong>Price</strong>: $<%=product.price.toFixed(2)%></li>
+                                    <li><a class="nav-btn" href="<%=product.url%>">See details</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    <% }); %>
+                <% } else { %>
+                    <p>No products currrently exist. Would you like to <a href="/create/product">create some</a>?</p>
+                <% }; %>
+            </div>
+        </main>
+    </div>
+    <%- include('../partials/footer.ejs') %>
+    <%- include('../partials/scripts.ejs') %>
+</body>
+</html>
